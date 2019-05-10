@@ -8,7 +8,13 @@ describe Astronaut, type: :model do
   end
 
   describe 'Relationships' do
-    it { should have_many :astronaut_missions}
-    it { should have_many :missions}
+    it { should have_many :astronaut_missions }
+    it { should have_many(:missions).through(:astronaut_missions) }
+  end
+
+  describe 'Instance Methods' do
+    it ".avg_age" do
+      expect(page).to have_content(astro)
+    end
   end
 end
